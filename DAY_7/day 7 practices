@@ -1,0 +1,100 @@
+day 7 
+ (threadclass)
+package thread;
+
+public class ThreadClass implements Runnable{
+	@Override
+	public void run()
+	{
+		for(int i=0;i<100;i++)
+			System.out.println(i);
+	}
+
+}
+(threadclass2)
+package thread;
+
+public class ThreadClass2  extends Thread{
+	@Override
+	public void run()
+	{
+		for(int i=0;i<100;i++)
+			System.out.println(i);
+	}
+
+}
+(runningclass to run the program)
+package thread;
+
+public class RunningClass {
+	public static void main(String[]args) {
+	//thread 1 starting procedure	
+		ThreadClass tc = new ThreadClass();
+		Thread tc1 = new Thread(tc);
+		tc1.start();
+		
+   //thread 2 starting procedure	
+		
+		ThreadClass2 tc2 = new ThreadClass2();
+		tc2.start();
+		for(int i=1000;i<1100;i++)
+			System.out.println(i);
+		
+		}
+-------------------------------------------------------------------------------------
+using sleep 
+package thread;
+
+public class ThreadClass implements Runnable{
+	@Override
+	public void run()
+	{
+		for(int i=0;i<100;i++)
+			System.out.println(i);
+	
+	
+	try {
+		Thread.sleep(100);
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+	
+	for(int i=0;i<100;i++)
+		System.out.println(i);
+}
+}
+to run:
+package thread;
+
+public class RunningClass {
+	public static void main(String[]args) {
+	//thread 1 starting procedure	
+		ThreadClass tc = new ThreadClass();
+		Thread tc1 = new Thread(tc);
+		tc1.start();
+		
+		
+   //thread 2 starting procedure	
+		
+		ThreadClass2 tc2 = new ThreadClass2();
+		tc2.start();
+		try {
+			tc1.join();
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+			System.out.println("program completed");
+				
+				
+				}
+}
+
+   
+	
+	}
+-----------------------------------------------------------------------------------------
+
+
+   
