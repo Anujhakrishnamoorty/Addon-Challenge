@@ -1,0 +1,123 @@
+task:
+1)count per course:
+student_name varchar(255),
+course varchar(255))' at line 1
+mysql> create table  student_detail(
+    -> rollno int,
+    -> name varchar(255),
+    -> course varchar(255));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into student_detail values(001,'anu','bscit'),(002,'sona','bca'),(3,'maha','bcom'),(5,'swa','bscit'),(6,'sathiya','bca');
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from student_detail;
++--------+---------+--------+
+| rollno | name    | course |
++--------+---------+--------+
+|      1 | anu     | bscit  |
+|      2 | sona    | bca    |
+|      3 | maha    | bcom   |
+|      5 | swa     | bscit  |
+|      6 | sathiya | bca    |
++--------+---------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student_detail where course in('bscit','bca');
++--------+---------+--------+
+| rollno | name    | course |
++--------+---------+--------+
+|      1 | anu     | bscit  |
+|      2 | sona    | bca    |
+|      5 | swa     | bscit  |
+|      6 | sathiya | bca    |
++--------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select count(*) as bscit  from student_detail where course='bscit';
++-------+
+| bscit |
++-------+
+|     2 |
++-------+
+1 row in set (0.04 sec)
+
+mysql>  select count(*) as bca  from student_detail where course='bca';
++-----+
+| bca |
++-----+
+|   2 |
++-----+
+1 row in set (0.00 sec)
+
+------------------------------------------------------------------------------
+question:2)average salary by department:
+mysql> create table employee(
+    -> empid int,
+    -> emp_name varchar(255),
+    -> depart varchar(255),
+    -> salary int);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into employee values(111,'sona','technical_team',50000),(222,'anu','software_testing',50000),(333,'maha','debuging_team',55000);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-------+----------+------------------+--------+
+| empid | emp_name | depart           | salary |
++-------+----------+------------------+--------+
+|   111 | sona     | technical_team   |  50000 |
+|   222 | anu      | software_testing |  50000 |
+|   333 | maha     | debuging_team    |  55000 |
++-------+----------+------------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select depart,avg(salary) as average from employee group by depart;
++------------------+------------+
+| depart           | average    |
++------------------+------------+
+| technical_team   | 50000.0000 |
+| software_testing | 50000.0000 |
+| debuging_team    | 55000.0000 |
++------------------+------------+
+3 rows in set (0.03 sec)
+-----------------------------------------------------------------------------
+question:3) find min max of product:
+mysql> create table soap(
+    -> item_name varchar(255),
+    -> price int );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into soap values('fiama',65),('johnson_baby',50),('pears',45);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from soap;
++--------------+-------+
+| item_name    | price |
++--------------+-------+
+| fiama        |    65 |
+| johnson_baby |    50 |
+| pears        |    45 |
++--------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select max(price) from soap;
++------------+
+| max(price) |
++------------+
+|         65 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(price) from soap;
++------------+
+| min(price) |
++------------+
+|         45 |
++------------+
+1 row in set (0.00 sec)
+------------------------------------------------------------------------------------
+main task:
