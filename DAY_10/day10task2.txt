@@ -1,0 +1,67 @@
+question:2)average salary by department:
+mysql> create table employee(
+    -> empid int,
+    -> emp_name varchar(255),
+    -> depart varchar(255),
+    -> salary int);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into employee values(111,'sona','technical_team',50000),(222,'anu','software_testing',50000),(333,'maha','debuging_team',55000);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-------+----------+------------------+--------+
+| empid | emp_name | depart           | salary |
++-------+----------+------------------+--------+
+|   111 | sona     | technical_team   |  50000 |
+|   222 | anu      | software_testing |  50000 |
+|   333 | maha     | debuging_team    |  55000 |
++-------+----------+------------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select depart,avg(salary) as average from employee group by depart;
++------------------+------------+
+| depart           | average    |
++------------------+------------+
+| technical_team   | 50000.0000 |
+| software_testing | 50000.0000 |
+| debuging_team    | 55000.0000 |
++------------------+------------+
+3 rows in set (0.03 sec)
+-----------------------------------------------------------------------------
+question:3) find min max of product:
+mysql> create table soap(
+    -> item_name varchar(255),
+    -> price int );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into soap values('fiama',65),('johnson_baby',50),('pears',45);
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from soap;
++--------------+-------+
+| item_name    | price |
++--------------+-------+
+| fiama        |    65 |
+| johnson_baby |    50 |
+| pears        |    45 |
++--------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select max(price) from soap;
++------------+
+| max(price) |
++------------+
+|         65 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(price) from soap;
++------------+
+| min(price) |
++------------+
+|         45 |
++------------+
+1 row in set (0.00 sec)
