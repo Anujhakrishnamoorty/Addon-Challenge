@@ -1,4 +1,3 @@
-day 3(TASK)
 import java.util.Scanner;
 
 class BankAccount {
@@ -38,12 +37,11 @@ public class Bank {
 
         account.showBalance();
     }
-
 }
 
-output:
-enter deposite number:200000
-deposited:200000.0
-enter withdrawn amount:150000
-balanace:50000.0
-
+OUTPUT:
+Enter deposit amount: 20000
+Deposited: ₹20000.0
+Enter withdraw amount: 500
+Withdrawn: ₹500.0
+Balance: ₹19500.0
