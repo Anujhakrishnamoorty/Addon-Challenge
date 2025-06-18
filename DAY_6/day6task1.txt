@@ -1,21 +1,18 @@
-import java.util.*;
-
-public class StudentList {
-    public static void main(String[] args) {
-        ArrayList<String> students = new ArrayList<>();
-        students.add("anu");
-        students.add("sona");
-        students.add("swa");
-
-        System.out.println("Students in ArrayList:");
-        Iterator<String> iterator = students.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+class NumberThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Number: " + i);
         }
     }
+
+    public static void main(String[] args) {
+        NumberThread t1 = new NumberThread();
+        t1.start();
+    }
 }
-OUtput:
-Students in ArrayList:
-anu
-sona
-swa
+Output:
+Number: 1
+Number: 2
+Number: 3
+...
+Number: 10
